@@ -4,6 +4,8 @@
   "description": "Post Quantum NodeJS interface for Kyber 1024.",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm run cmake-clean",
+    "install": "npm run cmake-compile",
     "cmake-clean": "npx cmake-js clean && node scripts/clean.js",
     "cmake-compile": "npx cmake-js compile && node scripts/move.js",
     "test": "mocha",
