@@ -5,7 +5,12 @@ project (node-kyber CXX)
 add_definitions(-DNAPI_EXPERIMENTAL)
 add_definitions(-DNAPI_VERSION=3)
 
-add_definitions(-O3)
+
+if(WIN32)
+    add_definitions(/O2)
+ELSE()
+    add_definitions(-O3 -Wall)
+ENDIF()
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
