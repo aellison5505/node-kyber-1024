@@ -5,6 +5,11 @@ export interface keys {
     privateKey: Buffer;
 }
 
+export interface encRet {
+    secureKey: Buffer,
+    cipherBytes: Buffer
+}
+
 export class Kyber {
 
     createKeys(): Promise<keys> {
@@ -20,12 +25,15 @@ export class Kyber {
         });
     }
 
-    encryptKey(publicKey: Buffer):  Promise<[Buffer, Buffer]> {
-        return new Promise<[Buffer, Buffer]>((ret) => { 
+    encryptKey(publicKey: Buffer):  Promise<encRet> {
+        return new Promise<encRet>((ret) => { 
             let ct = Buffer.alloc(CIPHERTEXTBYTES);
             let sKey = Buffer.alloc(CRYPTO_BYTES);
             encrypt(ct, sKey, publicKey);
-            ret([ct, sKey]);
+            ret({
+                secureKey: sKey,
+                cipherBytes: ct
+            });
         });
     }
 

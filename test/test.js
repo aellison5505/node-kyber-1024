@@ -20,8 +20,9 @@ describe('Kyber-1024', function() {
     });
     describe('#encryptKey', () => {
         before(async () => {
-        
-            [this.cBytes, this.sKey] = await this.kyber.encryptKey(this.keys.publicKey);
+         const retVars = await this.kyber.encryptKey(this.keys.publicKey);
+         this.cBytes = retVars.cipherBytes;
+         this.sKey = retVars.secureKey;
         });
         it('should return a cipher bytes', () => {
             expect(this.cBytes.length).to.equal(CIPHERTEXTBYTES);
