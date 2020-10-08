@@ -1,6 +1,6 @@
 {
   "name": "node-kyber-1024",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Post Quantum NodeJS interface for Kyber 1024.",
   "main": "index.js",
   "scripts": {
